@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise for My Babe Love! ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for the body and overall layout - Mobile First */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrollbars */
+            /* Even softer, more ethereal gradient */
+            background: linear-gradient(135deg, #f8f0ff 0%, #e0f2f7 50%, #fff0f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* For absolute positioning of particles */
+            padding: 1rem; /* Default padding for all screen sizes */
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: rgba(255, 255, 255, 0.98); /* Almost opaque for crisp content */
+            backdrop-filter: blur(20px); /* Stronger frosted glass effect */
+            border-radius: 3.5rem; /* Super rounded corners */
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3); /* Deeper, more diffused shadow */
+            padding: 2.5rem; /* Mobile default padding */
+            max-width: 98%; /* Flexible width */
+            width: 950px; /* Max width for larger screens */
+            text-align: center;
+            position: relative;
+            z-index: 10; /* Ensure content is above floating particles */
+            animation: fadeInScale 1s ease-out forwards;
+            border: 5px solid #d1c4e9; /* Thicker, soft purple border */
+            overflow: hidden; /* Hide anything overflowing the rounded corners */
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive; /* Elegant script font */
+            color: #8e24aa; /* Richer, deeper purple for headings */
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25); /* More prominent, softer shadow */
+            animation: slideInDown 1s ease-out forwards;
+            margin-bottom: 1.5rem; /* Mobile default margin */
+            font-size: 2.5rem; /* Mobile default font size */
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-120px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro-message {
+            color: #333; /* Even darker grey for maximum contrast */
+            line-height: 1.6;
+            font-size: 1rem; /* Mobile default font size */
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+            margin-bottom: 2rem; /* Mobile default margin */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Countdown timer styling */
+        .countdown-container {
+            margin-top: 2rem; /* Mobile default margin */
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Mobile default gap */
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); /* Gradient for countdown items */
+            color: white;
+            padding: 1rem 1.5rem; /* Mobile default padding */
+            border-radius: 1.2rem; /* Rounded corners */
+            font-size: 1.5rem; /* Mobile default font size */
+            font-weight: 700;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+            min-width: 100px; /* Mobile default min-width */
+            animation: bounceIn 1s ease-out forwards;
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-10px) scale(1.05); /* More pronounced hover effect */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .countdown-item:nth-child(1) { animation-delay: 1s; }
+        .countdown-item:nth-child(2) { animation-delay: 1.2s; }
+        .countdown-item:nth-child(3) { animation-delay: 1.4s; }
+        .countdown-item:nth-child(4) { animation-delay: 1.6s; }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .countdown-item span {
+            display: block;
+            font-size: 0.8rem; /* Mobile default label font */
+            font-weight: 400;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Floating Particles Animation */
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9); /* Brighter, more transparent */
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            pointer-events: none;
+            z-index: 5;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8); /* Stronger, softer glow */
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(-10vh) translateX(0) scale(0.7); opacity: 0; }
+            20% { opacity: 0.9; }
+            100% { transform: translateY(100vh) translateX(var(--x-offset)) scale(1.8); opacity: 0; }
+        }
+
+        /* Confetti Effect (for birthday) */
+        .confetti {
+            position: absolute;
+            width: 14px; /* Larger confetti */
+            height: 14px;
+            background-color: #f0f;
+            animation: confetti-fall linear infinite;
+            opacity: 0;
+            z-index: 20;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10vh) rotateZ(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+        }
+
+        /* Birthday Message Pop-up */
+        .birthday-message-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Darker, more solid overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .birthday-message-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%); /* Very light, warm golden gradient */
+            color: #5d4037; /* Darker brown for text */
+            padding: 3rem; /* Mobile default padding */
+            border-radius: 2.8rem; /* More rounded */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); /* Deeper, more prominent shadow */
+            text-align: center;
+            max-width: 90%; /* Flexible width for mobile */
+            transform: scale(0.5); /* Starts smaller */
+            transition: transform 0.5s ease-out;
+            border: 5px solid #ffeb3b; /* Brighter golden border */
+        }
+
+        .birthday-message-popup.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-content h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #ffc107; /* Richer golden yellow */
+            font-size: 3rem; /* Mobile default heading size */
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .popup-content p {
+            font-size: 1.1rem; /* Mobile default paragraph font */
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .close-button {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); /* Gradient for close button */
+            color: white;
+            padding: 0.9rem 2rem; /* Mobile default padding */
+            border-radius: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border: none;
+        }
+
+        .close-button:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Interactive Gift Box */
+        .gift-box-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem auto; /* Mobile default margin */
+            perspective: 1000px; /* For 3D rotation */
+            z-index: 15;
+        }
+
+        .gift-box {
+            width: 180px; /* Mobile default width */
+            height: 130px; /* Mobile default height */
+            background: linear-gradient(135deg, #ff80ab 0%, #e91e63 100%); /* Gradient for gift box */
+            border: 5px solid #c2185b; /* Thicker, deeper pink border */
+            border-radius: 1.5rem; /* More rounded */
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+            transition: transform 0.7s ease-in-out;
+            transform-style: preserve-3d;
+            animation: pulseGift 2s infinite alternate;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1); /* More pronounced hover effect */
+        }
+
+        @keyframes pulseGift {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .gift-box-lid {
+            position: absolute;
+            top: -35px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: 60px; /* Mobile default lid height */
+            background: linear-gradient(135deg, #d81b60 0%, #a00037 100%); /* Gradient for lid */
+            border: 5px solid #880e4f; /* Darker lid border */
+            border-radius: 1.2rem;
+            transform-origin: bottom center;
+            transition: transform 0.8s ease-out;
+            z-index: 2;
+        }
+
+        .gift-box.open .gift-box-lid {
+            transform: rotateX(110deg) translateY(-30px) translateZ(70px); /* More open lid, further back */
+        }
+
+        .gift-box-ribbon {
+            position: absolute;
+            background: linear-gradient(to right, #ffd700 0%, #ffc107 100%); /* Golden gradient ribbon */
+            z-index: 3;
+        }
+        .gift-box-ribbon.vertical {
+            width: 25px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .gift-box-ribbon.horizontal {
+            width: 100%;
+            height: 25px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .gift-box-bow {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
+            border-radius: 50%;
+            top: -65px; /* Higher bow */
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: #d81b60; /* Deep pink for emoji */
+        }
+        .gift-box-bow::before, .gift-box-bow::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
+            border-radius: 50%;
+        }
+        .gift-box-bow::before { left: -15px; top: 8px; }
+        .gift-box-bow::after { right: -15px; top: 8px; }
+
+
+        .gift-box-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+            color: #673ab7; /* Deep purple */
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem; /* Mobile default font size */
+            font-weight: bold;
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+            z-index: 1; /* Below lid when closed */
+            white-space: nowrap;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Ensure gift message is above ribbons when open */
+        .gift-box.open .gift-box-message {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            transition-delay: 0.3s; /* Appear after lid opens */
+            z-index: 5; /* Higher than ribbons */
+        }
+
+        /* Music Toggle Button */
+        .music-toggle {
+            position: fixed;
+            bottom: 1.5rem; /* Mobile default position */
+            right: 1.5rem;
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%); /* Gradient for music toggle */
+            color: white;
+            border-radius: 50%;
+            width: 50px; /* Mobile default size */
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem; /* Mobile default icon size */
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            z-index: 110;
+            border: none;
+        }
+
+        .music-toggle:hover {
+            background: linear-gradient(135deg, #9575cd 0%, #7e57c2 100%);
+            transform: scale(1.15); /* More pronounced hover */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .music-toggle.playing {
+            background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%); /* Green gradient when playing */
+        }
+
+        /* Special Delivery Game Section */
+        .delivery-game-section {
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+            border-radius: 2.5rem; /* More rounded */
+            padding: 2rem; /* Mobile default padding */
+            margin-top: 3rem; /* Mobile default margin */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Softer, deeper shadow */
+            border: 4px solid #d1c4e9; /* Matching softer purple border */
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 1;
+        }
+
+        .delivery-game-section h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #8e24aa; /* Matching deeper purple */
+            font-size: 2.2rem; /* Mobile default heading size */
+            margin-bottom: 1.5rem;
+        }
+
+        .track-button {
+            background: linear-gradient(135deg, #ff69b4 0%, #e91e63 100%); /* Gradient for track button */
+            color: white;
+            padding: 0.9rem 2rem; /* Mobile default padding */
+            border-radius: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            margin-top: 1.5rem;
+            border: none;
+        }
+
+        .track-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .track-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .tracking-status {
+            margin-top: 1.8rem;
+            font-size: 1.1rem; /* Mobile default font size */
+            color: #444; /* Darker text */
+            min-height: 2.5em;
+            font-weight: 500;
+        }
+
+        .guess-game {
+            margin-top: 2rem;
+            padding-top: 1.8rem;
+            border-top: 2px dashed #e0e0e0; /* Lighter, subtle dashed border */
+        }
+
+        .guess-game p {
+            font-size: 1.05rem; /* Mobile default text size */
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+
+        .guess-game input[type="text"] {
+            width: 95%; /* Wider input for mobile */
+            max-width: 380px; /* Max width for larger screens */
+            padding: 0.9rem; /* Mobile default padding */
+            border: 2px solid #a78bfa;
+            border-radius: 1rem;
+            font-size: 1rem; /* Mobile default font size */
+            text-align: center;
+            margin-bottom: 1.2rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .guess-game input[type="text"]:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.4); /* More prominent glow */
+        }
+
+        .guess-game .submit-button {
+            background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); /* Green gradient for submit */
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+
+        .guess-game .submit-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .guess-game .submit-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .guess-result {
+            margin-top: 1.5rem;
+            font-size: 1.1rem; /* Mobile default font size */
+            color: #f44336; /* Brighter red for results */
+            font-weight: 600;
+        }
+
+        .gift-option-button {
+            background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%); /* Golden gradient for gift options */
+            color: #6d4c41;
+            padding: 0.9rem 1.6rem; /* Mobile default padding */
+            border-radius: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            flex-grow: 1;
+            max-width: 280px;
+            border: none;
+        }
+
+        .gift-option-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #ffb300 0%, #ffa000 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gift-option-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            color: #888;
+            box-shadow: none;
+        }
+
+        /* Responsive adjustments (min-width for desktop-first approach) */
+        @media (min-width: 640px) { /* Small screens and up (sm breakpoint) */
+            .container {
+                padding: 3rem;
+                border-radius: 3.8rem;
+            }
+            h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1.8rem;
+            }
+            .intro-message {
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
+            }
+            .countdown-container {
+                gap: 1.8rem;
+                margin-top: 2.5rem;
+            }
+            .countdown-item {
+                font-size: 1.8rem;
+                padding: 1.2rem 1.8rem;
+                min-width: 120px;
+            }
+            .countdown-item span {
+                font-size: 0.9rem;
+            }
+            .gift-box-wrapper {
+                margin: 3.5rem auto;
+            }
+            .gift-box {
+                width: 200px;
+                height: 150px;
+            }
+            .gift-box-lid {
+                height: 65px;
+            }
+            .gift-box-bow {
+                top: -60px;
+            }
+            .gift-box-message {
+                font-size: 2rem;
+            }
+            .music-toggle {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+                bottom: 1.8rem;
+                right: 1.8rem;
+            }
+            .delivery-game-section {
+                padding: 2.2rem;
+                margin-top: 3.5rem;
+            }
+            .delivery-game-section h2 {
+                font-size: 2.5rem;
+            }
+            .track-button, .guess-game .submit-button, .gift-option-button {
+                padding: 1rem 2.2rem;
+                font-size: 1rem;
+            }
+            .guess-game p {
+                font-size: 1.1rem;
+            }
+            .guess-game input[type="text"] {
+                padding: 1rem;
+                font-size: 1.05rem;
+            }
+            .guess-result {
+                font-size: 1.15rem;
+            }
+            .popup-content {
+                padding: 3.5rem;
+                max-width: 580px;
+            }
+            .popup-content h2 {
+                font-size: 3.5rem;
+            }
+            .popup-content p {
+                font-size: 1.3rem;
+            }
+            .close-button {
+                padding: 1rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 768px) { /* Medium screens and up (md breakpoint) */
+            .container {
+                padding: 3.8rem;
+                border-radius: 4rem;
+            }
+            h1 {
+                font-size: 4.2rem;
+                margin-bottom: 2rem;
+            }
+            .intro-message {
+                font-size: 1.25rem;
+                margin-bottom: 3rem;
+            }
+            .countdown-container {
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            .countdown-item {
+                font-size: 2.2rem;
+                padding: 1.4rem 2rem;
+                min-width: 130px;
+            }
+            .countdown-item span {
+                font-size: 1rem;
+            }
+            .gift-box {
+                width: 220px;
+                height: 160px;
+            }
+            .gift-box-lid {
+                height: 70px;
+            }
+            .gift-box-bow {
+                top: -65px;
+            }
+            .gift-box-message {
+                font-size: 2.2rem;
+            }
+            .music-toggle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                bottom: 2rem;
+                right: 2rem;
+            }
+            .delivery-game-section {
+                padding: 2.5rem;
+                margin-top: 4rem;
+            }
+            .delivery-game-section h2 {
+                font-size: 2.8rem;
+            }
+            .track-button, .guess-game .submit-button, .gift-option-button {
+                padding: 1.1rem 2.4rem;
+                font-size: 1.1rem;
+            }
+            .guess-game p {
+                font-size: 1.2rem;
+            }
+            .guess-game input[type="text"] {
+                padding: 1.1rem;
+                font-size: 1.1rem;
+            }
+            .guess-result {
+                font-size: 1.2rem;
+            }
+            .popup-content {
+                padding: 4rem;
+                max-width: 600px;
+            }
+            .popup-content h2 {
+                font-size: 4rem;
+            }
+            .popup-content p {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (min-width: 1024px) { /* Large screens and up (lg breakpoint) */
+            .container {
+                padding: 4.5rem;
+                border-radius: 4.5rem;
+            }
+            h1 {
+                font-size: 5rem;
+                margin-bottom: 2.5rem;
+            }
+            .intro-message {
+                font-size: 1.3rem;
+                margin-bottom: 3.5rem;
+            }
+            .countdown-container {
+                gap: 2.5rem;
+                margin-top: 3.5rem;
+            }
+            .countdown-item {
+                font-size: 2.5rem;
+                padding: 1.6rem 2.2rem;
+                min-width: 150px;
+            }
+            .countdown-item span {
+                font-size: 1.1rem;
+            }
+            .gift-box {
+                width: 250px;
+                height: 180px;
+            }
+            .gift-box-lid {
+                height: 80px;
+                top: -40px;
+            }
+            .gift-box-bow {
+                width: 60px;
+                height: 60px;
+                top: -75px;
+                font-size: 2.2rem;
+            }
+            .gift-box-bow::before, .gift-box-bow::after {
+                width: 35px;
+                height: 35px;
+            }
+            .gift-box-message {
+                font-size: 2.5rem;
+            }
+            .music-toggle {
+                width: 65px;
+                height: 65px;
+                font-size: 2rem;
+                bottom: 2.5rem;
+                right: 2.5rem;
+            }
+            .delivery-game-section {
+                padding: 3rem;
+                margin-top: 4.5rem;
+            }
+            .delivery-game-section h2 {
+                font-size: 3.2rem;
+            }
+            .track-button, .guess-game .submit-button, .gift-option-button {
+                padding: 1.2rem 2.6rem;
+                font-size: 1.2rem;
+            }
+            .guess-game p {
+                font-size: 1.25rem;
+            }
+            .guess-game input[type="text"] {
+                padding: 1.2rem;
+                font-size: 1.15rem;
+            }
+            .guess-result {
+                font-size: 1.25rem;
+            }
+            .popup-content {
+                padding: 4.5rem;
+                max-width: 650px;
+            }
+            .popup-content h2 {
+                font-size: 4.5rem;
+            }
+            .popup-content p {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Container for the Birthday Page -->
+    <div class="container relative">
+        <h1 class="font-bold">A Special Surprise Just For You, Babe Love!</h1>
+        <p id="introMessage" class="intro-message">
+            My dearest babe love, get ready for a little something special! Click the gift box below to unveil your birthday message.
+        </p>
+
+        <!-- Interactive Gift Box -->
+        <div class="gift-box-wrapper">
+            <div id="giftBox" class="gift-box">
+                <div class="gift-box-lid"></div>
+                <div class="gift-box-ribbon vertical"></div>
+                <div class="gift-box-ribbon horizontal"></div>
+                <div class="gift-box-bow">🎁</div>
+                <div id="giftMessage" class="gift-box-message">Happy Birthday, My Babe Love!</div>
+            </div>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="countdown-container" id="countdown">
+            <div class="countdown-item" id="days">00<span>Days</span></div>
+            <div class="countdown-item" id="hours">00<span>Hours</span></div>
+            <div class="countdown-item" id="minutes">00<span>Minutes</span></div>
+            <div class="countdown-item" id="seconds">00<span>Seconds</span></div>
+        </div>
+
+        <!-- Special Delivery Game Section -->
+        <div id="deliveryGameSection" class="delivery-game-section">
+            <h2>Your Special Delivery Adventure! 💖</h2>
+            <p id="deliveryIntroText">A mysterious parcel is on its way, filled with secrets and smiles! Let's track its magical journey together.</p>
+            <button id="trackParcelButton" class="track-button">Start Tracking My Parcel!</button>
+            <div id="trackingStatus" class="tracking-status"></div>
+
+            <!-- Guess the Gift Game -->
+            <div id="guessGiftGame" class="guess-game hidden">
+                <p class="mb-4">The parcel has arrived! But what delightful treasure could be hiding inside? Make your best guess, my clever babe love! 🤔</p>
+                <div class="flex flex-wrap justify-center gap-4 mb-4">
+                    <button class="gift-option-button" data-gift="skincare">A Luxurious Skincare Set</button>
+                    <button class="gift-option-button" data-gift="dress">A Stunning New Dress</button>
+                    <button class="gift-option-button" data-gift="shoes">A Pair of Dreamy Shoes</button>
+                    <button class="gift-option-button" data-gift="ring">A Sparkling Ring</button>
+                </div>
+                <p id="giftGuessResult" class="guess-result"></p>
+            </div>
+
+            <!-- Guess the Brand Game -->
+            <div id="guessBrandGame" class="guess-game hidden">
+                <p class="mb-4">Ooh, you're so close! Now for the ultimate challenge: can you guess the magical brand behind this special gift? ✨</p>
+                <input type="text" id="brandGuessInput" placeholder="Your brand guess..." class="mb-4">
+                <button id="submitBrandGuessButton" class="submit-button">Unveil the Brand!</button>
+                <p id="brandGuessResult" class="guess-result"></p>
+            </div>
+
+            <!-- Final Reveal Message -->
+            <div id="finalSurpriseReveal" class="guess-game hidden">
+                <p id="finalSurpriseText" class="text-xl font-semibold text-purple-700"></p>
+                <p class="text-base text-gray-600 mt-4">Keep this page close, my babe love! There's an even bigger surprise waiting for you on **August 13th**! Come back then for the grand reveal and your special moment. Can't wait! 🥰</p>
+            </div>
+        </div>
+
+        <!-- Placeholder for floating particles -->
+        <div id="particle-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+    </div>
+
+    <!-- Birthday Message Pop-up (hidden by default) -->
+    <div id="birthdayPopup" class="birthday-message-popup">
+        <div class="popup-content">
+            <h2>Happy Birthday, My Babe Love!</h2>
+            <p>On this special day, I want you to know how much you mean to me. You are my sunshine, my joy, and my everything. May your life be filled with endless happiness and babe love. I love you more than words can express motiiiiiiii!</p>
+            <button id="closePopup" class="close-button">Close</button>
+        </div>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <div id="musicToggle" class="music-toggle">
+        🎵
+    </div>
+    <audio id="backgroundMusic" loop>
+        <!-- Add your music source here! Example: <source src="your-music-file.mp3" type="audio/mpeg"> -->
+        <!-- You can also use a public URL for an audio file. -->
+        <!-- For example: <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> -->
+        <!-- Note: Direct access to local files or certain external URLs might be restricted in some browser environments. -->
+    </audio>
+
+    <script>
+        // Set the target date for the countdown (August 13th of the current year)
+        const targetDate = new Date(new Date().getFullYear(), 7, 13, 0, 0, 0); // Month is 0-indexed (August is 7)
+
+        const giftBox = document.getElementById('giftBox');
+        const birthdayPopup = document.getElementById('birthdayPopup');
+        const closePopupButton = document.getElementById('closePopup');
+        const musicToggle = document.getElementById('musicToggle');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const trackParcelButton = document.getElementById('trackParcelButton');
+        const trackingStatus = document.getElementById('trackingStatus');
+        const deliveryGameSection = document.getElementById('deliveryGameSection');
+        const guessGiftGame = document.getElementById('guessGiftGame');
+        const guessBrandGame = document.getElementById('guessBrandGame');
+        const brandGuessInput = document.getElementById('brandGuessInput');
+        const submitBrandGuessButton = document.getElementById('submitBrandGuessButton');
+        const giftGuessResult = document.getElementById('giftGuessResult');
+        const brandGuessResult = document.getElementById('brandGuessResult');
+        const finalSurpriseReveal = document.getElementById('finalSurpriseReveal');
+        const finalSurpriseText = document.getElementById('finalSurpriseText');
+        const giftOptionButtons = document.querySelectorAll('.gift-option-button');
+
+        // Initial state for the game
+        let parcelTracked = false;
+        let giftGuessed = false;
+        let brandGuessed = false;
+        let correctGift = "ring"; // The correct gift
+        let correctBrand = "tiffany & co."; // The correct brand (case-insensitive for input)
+
+        // Function to update the countdown
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<span>Days</span>';
+            document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<span>Hours</span>';
+            document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<span>Minutes</span>';
+            document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<span>Seconds</span>';
+
+            // If the countdown is over
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="countdown-item">Happy Birthday!</div>';
+                // Optionally trigger birthday message immediately if past date
+                // showBirthdayPopup();
+            }
+        }
+
+        // Update the countdown every 1 second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Call once immediately to avoid delay
+
+        // Gift box click event
+        giftBox.addEventListener('click', () => {
+            giftBox.classList.add('open');
+            // Show birthday message after a short delay to allow lid animation
+            setTimeout(() => {
+                showBirthdayPopup();
+                createConfetti(); // Trigger confetti when gift box opens
+            }, 800);
+        });
+
+        // Close pop-up button event
+        closePopupButton.addEventListener('click', () => {
+            birthdayPopup.classList.remove('show');
+            // Optionally reset gift box state if desired for re-opening
+            // giftBox.classList.remove('open');
+        });
+
+        // Function to show birthday pop-up
+        function showBirthdayPopup() {
+            birthdayPopup.classList.add('show');
+        }
+
+        // Music toggle functionality
+        musicToggle.addEventListener('click', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play().catch(e => console.error("Error playing music:", e));
+                musicToggle.classList.add('playing');
+                musicToggle.textContent = '⏸️'; // Pause icon
+            } else {
+                backgroundMusic.pause();
+                musicToggle.classList.remove('playing');
+                musicToggle.textContent = '🎵'; // Music icon
+            }
+        });
+
+        // Auto-play music on user interaction (best practice for browsers)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Try to play music if it has a source, otherwise wait for user to add one
+            if (backgroundMusic.src) {
+                backgroundMusic.play().then(() => {
+                    musicToggle.classList.add('playing');
+                    musicToggle.textContent = '⏸️';
+                }).catch(e => {
+                    console.warn("Autoplay prevented. User will need to click music icon.", e);
+                    musicToggle.classList.remove('playing');
+                    musicToggle.textContent = '🎵';
+                });
+            } else {
+                console.log("No music source found. Please add a source to the <audio> tag.");
+                musicToggle.classList.remove('playing');
+                musicToggle.textContent = '🎵';
+            }
+        });
+
+
+        // Floating particles effect
+        const particleContainer = document.getElementById('particle-container');
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 10 + 5; // Size between 5px and 15px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`; // Duration between 5s and 15s
+            particle.style.animationDelay = `${Math.random() * 5}s`; // Delay up to 5s
+            particle.style.setProperty('--x-offset', `${(Math.random() - 0.5) * 200}px`); // Horizontal drift
+            particleContainer.appendChild(particle);
+
+            // Remove particle after animation ends to prevent DOM bloat
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300); // Create a new particle every 300ms
+
+        // Confetti effect (triggered on birthday message popup)
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) { // Create 50 confetti pieces
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`; // Random pastel color
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`; // 2-5 seconds
+                confetti.style.animationDelay = `${Math.random() * 2}s`; // 0-2 seconds delay
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = confetti.style.width;
+                confetti.style.transform = `rotateZ(${Math.random() * 360}deg)`; // Initial random rotation
+                document.body.appendChild(confetti);
+
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+
+        // Parcel Tracking Game Logic
+        trackParcelButton.addEventListener('click', () => {
+            if (parcelTracked) return; // Prevent multiple clicks
+
+            trackParcelButton.disabled = true;
+            trackingStatus.textContent = 'Tracking parcel... 🚚';
+
+            // Smooth scroll to the game section
+            deliveryGameSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                trackingStatus.textContent = 'Parcel is out for delivery! 📦';
+            }, 2000); // 2 seconds
+
+            setTimeout(() => {
+                trackingStatus.textContent = 'Parcel has arrived! 🎉';
+                parcelTracked = true;
+                guessGiftGame.classList.remove('hidden'); // Show guess gift game
+                trackParcelButton.classList.add('hidden'); // Hide track button
+                deliveryIntroText.classList.add('hidden'); // Hide intro text
+            }, 4000); // 4 seconds
+        });
+
+        // Guess the Gift Game Logic
+        giftOptionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (giftGuessed) return;
+
+                const selectedGift = button.dataset.gift;
+                if (selectedGift === correctGift) {
+                    giftGuessResult.textContent = `Amazing! You  guessed it wrong! It's a ${correctGift} bhai ring nhi hai kuch aur hai guess krte rho tm! 🤩`;
+                    giftGuessResult.style.color = '#4CAF50'; // Green for correct
+                    giftGuessed = true;
+                    // Disable all gift option buttons
+                    giftOptionButtons.forEach(btn => btn.disabled = true);
+                    // Show guess brand game after a short delay
+                    setTimeout(() => {
+                        guessBrandGame.classList.remove('hidden');
+                    }, 1500);
+                } else {
+                    giftGuessResult.textContent = `Thoda dimaag lga ley gadhi 🤔`;
+                    giftGuessResult.style.color = '#F44336'; // Red for incorrect
+                }
+            });
+        });
+
+        // Guess the Brand Game Logic
+        submitBrandGuessButton.addEventListener('click', () => {
+            if (brandGuessed) return;
+
+            const brandGuess = brandGuessInput.value.trim().toLowerCase();
+            if (brandGuess === correctBrand) {
+                brandGuessResult.textContent = `Wow, wrong guess cutie but koi baat nhi  ${correctBrand.toUpperCase()}! ✨`;
+                brandGuessResult.style.color = '#4CAF50'; // Green for correct
+                brandGuessed = true;
+                submitBrandGuessButton.disabled = true;
+                brandGuessInput.disabled = true;
+                // Show final reveal message
+                setTimeout(() => {
+                    guessGiftGame.classList.add('hidden'); // Hide gift game
+                    guessBrandGame.classList.add('hidden'); // Hide brand game
+                    finalSurpriseReveal.classList.remove('hidden');
+                    finalSurpriseText.textContent = `The ultimate surprise for you is a beautiful ${correctGift} from ${correctBrand.toUpperCase()}! Your special gift is waiting to be unveiled on your birthday! 💖`;
+                }, 1500);
+            } else {
+                brandGuessResult.textContent = `Hmm, not that one! Try another magical brand! 🧐`;
+                brandGuessResult.style.color = '#F44336'; // Red for incorrect
+            }
+        });
+
+    </script>
+</body>
+</html>
