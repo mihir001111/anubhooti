@@ -1061,7 +1061,7 @@
                         guessBrandGame.classList.remove('hidden');
                     }, 1500);
                 } else {
-                    giftGuessResult.textContent = `Not quite! Keep guessing, my clever one! 🤔`;
+                    giftGuessResult.textContent = `Not quite! Keep guessing, my clever one! �`;
                     giftGuessResult.style.color = '#F44336'; // Red for incorrect
                 }
             });
@@ -1103,7 +1103,8 @@
                         guessBrandGame.classList.add('hidden');
                         deliveryGameSection.classList.add('hidden'); // Completely hide the game section
                         finalSurpriseReveal.classList.remove('hidden');
-                        finalSurpriseText.textContent = `You won't get to know it now! The ultimate surprise is still waiting for you on **August 13th**! Come back then for the grand reveal and your special moment. Can't wait! 🥰`;
+                        // Updated message to include specific time and clear instruction
+                        finalSurpriseText.textContent = `You won't get to know it now! The ultimate surprise is still waiting for you on **August 13th at 8:30 PM**! Come back then for the grand reveal and your special moment. Can't wait! 🥰`;
                     }, 1500); // Match fade-out duration
                 } else {
                     brandGuessResult.textContent = `Hmm, not that one! Try another magical brand! You have ${4 - brandGuessCount} guesses left. 🧐`;
