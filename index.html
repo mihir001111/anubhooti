@@ -392,6 +392,12 @@
             border: 4px solid #d1c4e9; /* Matching softer purple border */
             animation: fadeIn 1s ease-out forwards;
             opacity: 1;
+            transition: opacity 1.5s ease-out; /* Added for fade-out animation */
+        }
+
+        .delivery-game-section.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Disable interactions during fade out */
         }
 
         .delivery-game-section h2 {
@@ -802,7 +808,7 @@
 
         <!-- Special Delivery Game Section -->
         <div id="deliveryGameSection" class="delivery-game-section">
-            <h2>Your Special Delivery Adventure! 💖</h2>
+            <h2>Your Special Delivery Adventure, Moti! 💖</h2>
             <p id="deliveryIntroText">A mysterious parcel is on its way, filled with secrets and smiles! Let's track its magical journey together.</p>
             <button id="trackParcelButton" class="track-button">Start Tracking My Parcel!</button>
             <div id="trackingStatus" class="tracking-status"></div>
@@ -821,7 +827,7 @@
 
             <!-- Guess the Brand Game -->
             <div id="guessBrandGame" class="guess-game hidden">
-                <p class="mb-4">Ooh, you're so close! Now for the ultimate challenge: can you guess the magical brand behind this special gift? ✨</p>
+                <p class="mb-4">Ooh, you're so close! Now for the ultimate challenge: can you guess the magical brand behind this special gift, Moti? ✨</p>
                 <input type="text" id="brandGuessInput" placeholder="Your brand guess..." class="mb-4">
                 <button id="submitBrandGuessButton" class="submit-button">Unveil the Brand!</button>
                 <p id="brandGuessResult" class="guess-result"></p>
@@ -842,7 +848,7 @@
     <div id="birthdayPopup" class="birthday-message-popup">
         <div class="popup-content">
             <h2>Happy Birthday, My Babe Love!</h2>
-            <p>On this special day, I want you to know how much you mean to me. You are my sunshine, my joy, and my everything. May your life be filled with endless happiness and babe love. I love you more than words can express motiiiiiiii!</p>
+            <p>On this special day, I want you to know how much you mean to me. You are my sunshine, my joy, and my everything. May your life be filled with endless happiness and babe love. I love you more than words can express, moti!</p>
             <button id="closePopup" class="close-button">Close</button>
         </div>
     </div>
@@ -879,6 +885,7 @@
         const finalSurpriseReveal = document.getElementById('finalSurpriseReveal');
         const finalSurpriseText = document.getElementById('finalSurpriseText');
         const giftOptionButtons = document.querySelectorAll('.gift-option-button');
+        const deliveryIntroText = document.getElementById('deliveryIntroText'); // Get the intro text element
 
         // Initial state for the game
         let parcelTracked = false;
@@ -886,6 +893,7 @@
         let brandGuessed = false;
         let correctGift = "ring"; // The correct gift
         let correctBrand = "tiffany & co."; // The correct brand (case-insensitive for input)
+        let brandGuessCount = 0; // Initialize brand guess count
 
         // Function to update the countdown
         function updateCountdown() {
@@ -1043,7 +1051,7 @@
 
                 const selectedGift = button.dataset.gift;
                 if (selectedGift === correctGift) {
-                    giftGuessResult.textContent = `Amazing! You  guessed it wrong! It's a ${correctGift} bhai ring nhi hai kuch aur hai guess krte rho tm! 🤩`;
+                    giftGuessResult.textContent = `Amazing! You guessed it! It's a ${correctGift}! 🤩`;
                     giftGuessResult.style.color = '#4CAF50'; // Green for correct
                     giftGuessed = true;
                     // Disable all gift option buttons
@@ -1053,7 +1061,7 @@
                         guessBrandGame.classList.remove('hidden');
                     }, 1500);
                 } else {
-                    giftGuessResult.textContent = `Thoda dimaag lga ley gadhi 🤔`;
+                    giftGuessResult.textContent = `Not quite! Keep guessing, my clever one! 🤔`;
                     giftGuessResult.style.color = '#F44336'; // Red for incorrect
                 }
             });
@@ -1065,7 +1073,7 @@
 
             const brandGuess = brandGuessInput.value.trim().toLowerCase();
             if (brandGuess === correctBrand) {
-                brandGuessResult.textContent = `Wow, wrong guess cutie but koi baat nhi  ${correctBrand.toUpperCase()}! ✨`;
+                brandGuessResult.textContent = `YES! You're a genius! It's from ${correctBrand.toUpperCase()}! ✨`;
                 brandGuessResult.style.color = '#4CAF50'; // Green for correct
                 brandGuessed = true;
                 submitBrandGuessButton.disabled = true;
@@ -1078,8 +1086,29 @@
                     finalSurpriseText.textContent = `The ultimate surprise for you is a beautiful ${correctGift} from ${correctBrand.toUpperCase()}! Your special gift is waiting to be unveiled on your birthday! 💖`;
                 }, 1500);
             } else {
-                brandGuessResult.textContent = `Hmm, not that one! Try another magical brand! 🧐`;
-                brandGuessResult.style.color = '#F44336'; // Red for incorrect
+                brandGuessCount++; // Increment guess count on incorrect guess
+                if (brandGuessCount >= 4) {
+                    brandGuessResult.textContent = `Oops! You've used all your guesses for now... 😔`;
+                    brandGuessResult.style.color = '#F44336';
+                    brandGuessed = true; // Disable further attempts
+                    submitBrandGuessButton.disabled = true;
+                    brandGuessInput.disabled = true;
+
+                    // Trigger fade-out animation for the game section
+                    deliveryGameSection.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        // Hide game sections and show final reveal after fade-out
+                        guessGiftGame.classList.add('hidden');
+                        guessBrandGame.classList.add('hidden');
+                        deliveryGameSection.classList.add('hidden'); // Completely hide the game section
+                        finalSurpriseReveal.classList.remove('hidden');
+                        finalSurpriseText.textContent = `You won't get to know it now! The ultimate surprise is still waiting for you on **August 13th**! Come back then for the grand reveal and your special moment. Can't wait! 🥰`;
+                    }, 1500); // Match fade-out duration
+                } else {
+                    brandGuessResult.textContent = `Hmm, not that one! Try another magical brand! You have ${4 - brandGuessCount} guesses left. 🧐`;
+                    brandGuessResult.style.color = '#F44336'; // Red for incorrect
+                }
             }
         });
 
